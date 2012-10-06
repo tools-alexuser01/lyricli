@@ -6,7 +6,7 @@
 <title>
   Class: Lyricli::Lyricli
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.8.2.1
   
 </title>
 
@@ -94,7 +94,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/lyricli.rb</dd>
+    <dd class="r2 last">lib/lyricli/lyricli.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -262,12 +262,12 @@ A new instance of Lyricli
       <pre class="lines">
 
 
-36
-37
-38</pre>
+4
+5
+6</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/lyricli.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/lyricli/lyricli.rb', line 4</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@source_manager</span> <span class='op'>=</span> <span class='const'>SourceManager</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -299,13 +299,13 @@ A new instance of Lyricli
       <pre class="lines">
 
 
-61
-62
-63
-64</pre>
+29
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/lyricli.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/lyricli/lyricli.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_params'>check_params</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_exit_with_error'>exit_with_error</span> <span class='kw'>if</span> <span class='ivar'>@current_track</span><span class='lbracket'>[</span><span class='symbol'>:artist</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='kw'>or</span> <span class='ivar'>@current_track</span><span class='lbracket'>[</span><span class='symbol'>:artist</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -325,21 +325,43 @@ A new instance of Lyricli
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>InvalidLyrics</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+8
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/lyricli.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/lyricli/lyricli.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exit_with_error'>exit_with_error</span>
-  <span class='id identifier rubyid_abort'>abort</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Usage: </span><span class='embexpr_beg'>#{</span><span class='gvar'>$0</span><span class='rbrace'>}</span><span class='tstring_content'> artist song</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>InvalidLyrics</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -361,21 +383,21 @@ A new instance of Lyricli
       <pre class="lines">
 
 
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55</pre>
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/lyricli.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/lyricli/lyricli.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_lyrics'>get_lyrics</span>
   <span class='id identifier rubyid_set_current_track'>set_current_track</span>
@@ -409,12 +431,12 @@ A new instance of Lyricli
       <pre class="lines">
 
 
-57
-58
-59</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/lyricli.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/lyricli/lyricli.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_current_track'>set_current_track</span>
   <span class='ivar'>@current_track</span> <span class='op'>=</span> <span class='ivar'>@source_manager</span><span class='period'>.</span><span class='id identifier rubyid_current_track'>current_track</span>
@@ -429,9 +451,9 @@ A new instance of Lyricli
 </div>
 
     <div id="footer">
-  Generated on Fri Oct  5 22:31:14 2012 by
+  Generated on Sat Oct  6 02:05:51 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.9.2).
+  0.8.2.1 (ruby-1.9.2).
 </div>
 
   </body>

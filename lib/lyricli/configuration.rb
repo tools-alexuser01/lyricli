@@ -1,6 +1,9 @@
 module Lyricli
+
+  # This class handles the configuration of Lyricli
   class Configuration
 
+    # Defines the paths to the default and user configuration files
     def initialize
       @config_path = "~/.lyricli.conf"
       @defaults_path = "defaults.json"
@@ -9,21 +12,37 @@ module Lyricli
 
     @@instance = Configuration.new
 
+    # Ensure this is only called once. Only use the instance class variable
+    # to access this method, as its constructor is private.
     def self.instance
       @@instance
     end
 
+    # Access configuration properties, loads config if needed beforehand.
+    #
+    # @param [String] key the configuration key to access
+    # @return [String, Hash, Array] the value of the configuration key.
     def [](key)
       load_config unless @config
       @config[key]
     end
 
+    # Assigns a new value to a configuration key, loads config if needed and
+    # saves it after updating.
+    #
+    # @param [String] key the configuration key to set
+    # @param [Object] value the value for the configuration key, can be any
+    #                 object as long as it can be converted to JSON
     def []=(key, value)
       load_config unless @config
       @config[key] = value
       save_config
     end
 
+    # Deletes a key from the configuration, loads config if needed and saves
+    # it after deleting.
+    #
+    # @param [String] key the key to delete
     def delete(key)
       load_config unless @config
       @config.delete(key)
@@ -32,8 +51,8 @@ module Lyricli
 
     private_class_method :new
 
-    # TODO: Apart from this, load a default yml that will be used for this.
-    # And just extend everything from the user's config.
+    # Loads the configuration from the user file, attempts to create it from
+    # defaults if it's not present. sets the `@config` instance variable.
     def load_config
       path = File.expand_path(@config_path)
 
@@ -45,6 +64,7 @@ module Lyricli
       end
     end
 
+    # Serializes the `@config` Hash to JSON and saves it to a file.
     def save_config
       path = File.expand_path(@config_path)
       file = File.new(path, "w")
@@ -54,6 +74,7 @@ module Lyricli
 
     private
 
+    # Loads the default configuration from a JSON file
     def load_default_config
       # Load the default
       path_root = File.expand_path(File.dirname(__FILE__))

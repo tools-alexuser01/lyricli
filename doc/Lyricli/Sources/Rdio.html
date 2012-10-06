@@ -6,7 +6,7 @@
 <title>
   Class: Lyricli::Sources::Rdio
   
-    &mdash; Documentation by YARD 0.8.1
+    &mdash; Documentation by YARD 0.8.2.1
   
 </title>
 
@@ -319,19 +319,19 @@ Instantiates everything it needs to run.
       <pre class="lines">
 
 
-23
-24
-25
-26
-27</pre>
+27
+28
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/lyricli/sources/rdio.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/lyricli/sources/rdio.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rdio</span><span class='tstring_end'>'</span></span>
-  <span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>Lyricli</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span>
-  <span class='ivar'>@rdio</span> <span class='op'>=</span> <span class='const'>Rdio</span><span class='op'>::</span><span class='const'>SimpleRdio</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_key</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_secret</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_auth_token</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span>
+  <span class='ivar'>@rdio</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Rdio</span><span class='op'>::</span><span class='const'>SimpleRdio</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_key</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_secret</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_auth_token</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -345,7 +345,6 @@ Instantiates everything it needs to run.
     
       
       <span id="name=-class_method"></span>
-      <span id="name-class_method"></span>
       <div class="method_details first">
   <h3 class="signature first" id="name-class_method">
   
@@ -423,11 +422,6 @@ token.
       <pre class="lines">
 
 
-46
-47
-48
-49
-50
 51
 52
 53
@@ -439,19 +433,24 @@ token.
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/lyricli/sources/rdio.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/lyricli/sources/rdio.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_auth_token'>create_auth_token</span>
-  <span class='ivar'>@rdio</span> <span class='op'>=</span> <span class='const'>Rdio</span><span class='op'>::</span><span class='const'>SimpleRdio</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_key</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_secret</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_auth_token</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rdio'>rdio</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Rdio</span><span class='op'>::</span><span class='const'>SimpleRdio</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_key</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_secret</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_auth_token</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
   <span class='comment'># Request Authorization
 </span>  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Follow this URL to authorize lyricli:</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_auth_url'>auth_url</span> <span class='op'>=</span> <span class='id identifier rubyid_rdio'>rdio</span><span class='period'>.</span><span class='id identifier rubyid_begin_authentication'>begin_authentication</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>oob</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_auth_url'>auth_url</span>
-  <span class='const'>Launchy</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_auth_url'>auth_url</span><span class='rparen'>)</span>
+  <span class='op'>::</span><span class='const'>Launchy</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_auth_url'>auth_url</span><span class='rparen'>)</span>
 
   <span class='comment'># Request Code, Obtain Token
 </span>  <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Please type the authorization code: </span><span class='tstring_end'>&quot;</span></span>
@@ -501,17 +500,25 @@ source. In the case of Rdio it has to authenticate with OAuth.
 17
 18
 19
-20</pre>
+20
+21
+22
+23
+24</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/lyricli/sources/rdio.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_enable'>enable</span>
   <span class='comment'># Validation Code
-</span>  <span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>Lyricli</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span>
+</span>  <span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span>
   <span class='kw'>unless</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_auth_token</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_auth_token</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
     <span class='id identifier rubyid_create_auth_token'>create_auth_token</span>
   <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>***</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, rdio tends to be a bit aggressive and tends to have trouble with other sources. If you're having trouble, you can disable it temporarily. You will not have to reauthenticate.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>***</span><span class='tstring_end'>&quot;</span></span>
 
 <span class='kw'>end</span></pre>
     </td>
@@ -546,16 +553,18 @@ The reset method resets any configurations it may have
       <pre class="lines">
 
 
-40
-41
-42</pre>
+44
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/lyricli/sources/rdio.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/lyricli/sources/rdio.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_reset'>reset</span>
-  <span class='comment'># Reset Code
-</span><span class='kw'>end</span></pre>
+  <span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span>
+  <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rdio_auth_token</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -614,15 +623,15 @@ A hash containing the current `:song` and `:artist`.
       <pre class="lines">
 
 
-32
-33
-34
-35
 36
-37</pre>
+37
+38
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/lyricli/sources/rdio.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/lyricli/sources/rdio.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_current_track'>current_track</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='ivar'>@rdio</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>currentUser</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>extras</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>lastSongPlayed</span><span class='tstring_end'>'</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -640,9 +649,9 @@ A hash containing the current `:song` and `:artist`.
 </div>
 
     <div id="footer">
-  Generated on Fri Oct  5 22:31:14 2012 by
+  Generated on Sat Oct  6 02:05:51 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.1 (ruby-1.9.2).
+  0.8.2.1 (ruby-1.9.2).
 </div>
 
   </body>

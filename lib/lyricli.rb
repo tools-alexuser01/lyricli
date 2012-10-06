@@ -39,21 +39,26 @@ module Lyricli
   end
 
   # Returns a list of the available sources to enable or disable
+  # @return [String] the list of available sources. Enabled sources have
+  #                   a star appended.
   def self.sources
     source_manager = SourceManager.new
     source_manager.available_sources(true).join(", ")
   end
 
+  # Enables a source via the Source Manager
   def self.enable(source_name)
     source_manager = SourceManager.new
     source_manager.enable(source_name)
   end
 
+  # Disables a source via the Source Manager
   def self.disable(source_name)
     source_manager = SourceManager.new
     source_manager.disable(source_name)
   end
 
+  # Resets all configuration for a source via the Source Manager
   def self.reset(source_name)
     source_manager = SourceManager.new
     source_manager.reset(source_name)

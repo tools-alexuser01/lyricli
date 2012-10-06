@@ -57,6 +57,9 @@ Also, I want to add the last song to the configuration, so you can check
 that. This would let us "watch" lyricli without hammering the lyrics
 wiki api
 
+Also, during the enable phase, sources like iTunes should check for
+proper OS and stop if they're not in their home turf.
+
 ### Leave Feedback Please! ###
 
 If you decide to use or hack away at Lyricly, please don't forget to

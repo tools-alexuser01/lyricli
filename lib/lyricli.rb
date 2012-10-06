@@ -32,24 +32,30 @@ module Lyricli
     @lyricli.get_lyrics
   end
 
+  # Returns the version of the library
+  # @return [String] the version
   def self.version
     Gem.loaded_specs["lyricli"].version
   end
 
+  # Returns a list of the available sources to enable or disable
   def self.sources
     source_manager = SourceManager.new
-    source_manager.available_sources.join(", ")
+    source_manager.available_sources(true).join(", ")
   end
 
-  def self.enable
-
+  def self.enable(source_name)
+    source_manager = SourceManager.new
+    source_manager.enable(source_name)
   end
 
-  def self.disable
-
+  def self.disable(source_name)
+    source_manager = SourceManager.new
+    source_manager.disable(source_name)
   end
 
-  def self.reset
-
+  def self.reset(source_name)
+    source_manager = SourceManager.new
+    source_manager.reset(source_name)
   end
 end

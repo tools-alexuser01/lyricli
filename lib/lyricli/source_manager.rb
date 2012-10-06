@@ -17,29 +17,43 @@ module Lyricli
     end
 
     def enable(source_name)
-      if klass = parse_class(camelize(source_name))
-        klass.enable
-        @config["enabled_sources"] << klass.name
-        @config["enabled_sources"].uniq!
+      if available_sources.include?(source_name)
+        if klass = parse_class(camelize(source_name))
+          klass.enable
+          @config["enabled_sources"] << klass.name
+          @config["enabled_sources"].uniq!
+          @config.save_config
+        else
+          raise EnableSourceException
+        end
       else
-        raise EnableSourceException
+        raise UnknownSource
       end
     end
 
     def disable(source_name)
-      if klass = parse_class(camelize(source_name))
-        @config["enabled_sources"].delete(klass.name)
+      if available_sources.include?(source_name)
+        if klass = parse_class(camelize(source_name))
+          @config["enabled_sources"].delete(klass.name)
+          @config.save_config
+        else
+          raise DisableSourceException
+        end
       else
-        raise DisableSourceException
+        raise UnknownSource
       end
     end
 
     def reset(source_name)
-      if klass = parse_class(camelize(source_name))
-        klass.reset
-        disable(source_name)
+      if available_sources.include?(source_name)
+        if klass = parse_class(camelize(source_name))
+          klass.reset
+          disable(source_name)
+        else
+          raise ResetSourceException
+        end
       else
-        raise ResetSourceException
+        raise UnknownSource
       end
     end
 
@@ -47,23 +61,41 @@ module Lyricli
       track = nil
       @enabled_sources.each do |source|
         begin
-          track ||= source.current_track
+          current_track = source.current_track
+
+          unless current_track[:artist].nil? || current_track[:artist].empty? || current_track[:song].nil? || current_track[:song].empty?
+            track = current_track
+          end
         rescue
-          fail "Source #{source.name} has failed to start. Please reset the source by running `#{$0} source reset #{source.name}.`"
+          raise SourceConfigurationException
         end
       end
       track
     end
 
-    def available_sources
+    def available_sources(format = false)
       path_root = File.expand_path(File.dirname(__FILE__))
       sources = Dir[path_root+"/sources/*"].map{ |s|
-        s.split("/").last.gsub(/\.rb/, "")
+        name = s.split("/").last.gsub(/\.rb/, "")
+
+        # Add a star to denote enabled sources
+        name
       }
 
       # Remove arguments (Hack?) We don't want anybody to touch tihs one.
       sources.delete("arguments")
-      sources
+      if format
+        format_sources(sources)
+      else
+        sources
+      end
+    end
+
+    def format_sources(sources)
+      sources.map{ |s|
+        s << "*" if @config["enabled_sources"].include?(s)
+        s
+      }
     end
   end
 end

@@ -12,18 +12,22 @@ module Lyricli
       # the source. In the case of Rdio it has to authenticate with OAuth.
       def self.enable
         # Validation Code
-        @config = Lyricli::Configuration.instance
+        @config = Configuration.instance
         unless @config["rdio_auth_token"] && !@config["rdio_auth_token"].empty?
           create_auth_token
         end
+
+        puts "***"
+        puts "Hello, rdio tends to be a bit aggressive and tends to have trouble with other sources. If you're having trouble, you can disable it temporarily. You will not have to reauthenticate."
+        puts "***"
 
       end
 
       # Instantiates everything it needs to run.
       def initialize
         @name = 'rdio'
-        @config = Lyricli::Configuration.instance
-        @rdio = Rdio::SimpleRdio.new([@config["rdio_key"], @config["rdio_secret"]], @config["rdio_auth_token"])
+        @config = Configuration.instance
+        @rdio = ::Rdio::SimpleRdio.new([@config["rdio_key"], @config["rdio_secret"]], @config["rdio_auth_token"])
       end
 
       # The current_track method should return the name of the current
@@ -38,19 +42,20 @@ module Lyricli
 
       # The reset method resets any configurations it may have
       def self.reset
-        # Reset Code
+        @config = Configuration.instance
+        @config.delete("rdio_auth_token")
       end
 
       # Signs in to rdio with our credentials and requests access for a new auth
       # token.
       def self.create_auth_token
-        @rdio = Rdio::SimpleRdio.new([@config["rdio_key"], @config["rdio_secret"]], @config["rdio_auth_token"])
+        rdio = ::Rdio::SimpleRdio.new([@config["rdio_key"], @config["rdio_secret"]], @config["rdio_auth_token"])
 
         # Request Authorization
         puts "Follow this URL to authorize lyricli:"
         auth_url = rdio.begin_authentication('oob')
         puts auth_url
-        Launchy.open(auth_url)
+        ::Launchy.open(auth_url)
 
         # Request Code, Obtain Token
         print "Please type the authorization code: "

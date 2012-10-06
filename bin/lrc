@@ -15,7 +15,8 @@ Options:
 }
 
     opts.on("-e", "--enable SOURCE", "Enable SOURCE") do |source|
-      puts "Enabling sources is not yet implemented"
+      Lyricli.enable(source)
+      puts "#{source} has been enabled"
       exit
     end
 
@@ -25,12 +26,14 @@ Options:
     end
 
     opts.on("-d", "--disable SOURCE", "Disable SOURCE") do |source|
-      puts "Disabling sources is not yet implemented"
+      Lyricli.disable(source)
+      puts "#{source} has been disabled"
       exit
     end
 
     opts.on("-r", "--reset SOURCE", "Reset the configuration of SOURCE") do |source|
-      puts "Resetting sources is not yet implemented"
+      Lyricli.reset(source)
+      puts "#{source} has been disabled and all its configuration reset"
       exit
     end
 

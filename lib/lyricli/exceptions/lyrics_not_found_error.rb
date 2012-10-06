@@ -1,6 +1,7 @@
 module Lyricli
   module Exceptions
-    class StartSourceException
+    class LyricsNotFoundError < StandardError
     end
   end
 end
+

@@ -1,6 +1,6 @@
 module Lyricli
   module Exceptions
-    class DisableSourceException
+    class InvalidLyricsError < StandardError
     end
   end
 end

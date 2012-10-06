@@ -1,6 +1,6 @@
 module Lyricli
   module Exceptions
-    class SourceConfigurationException
+    class UnknownSourceError < StandardError
     end
   end
 end

@@ -1,7 +1,6 @@
 module Lyricli
   module Exceptions
-    class ResetSourceException
+    class StartSourceError < StandardError
     end
   end
 end
-

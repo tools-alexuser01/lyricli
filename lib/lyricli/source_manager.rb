@@ -15,7 +15,7 @@ module Lyricli
           current_source = klass.new
           @enabled_sources << current_source
         else
-          raise StartSourceException
+          raise Exceptions::StartSourceError
         end
       end
     end
@@ -33,10 +33,10 @@ module Lyricli
           @config["enabled_sources"].uniq!
           @config.save_config
         else
-          raise EnableSourceException
+          raise Exceptions::EnableSourceError
         end
       else
-        raise UnknownSourceException
+        raise Exceptions::UnknownSourceError
       end
     end
 
@@ -50,10 +50,10 @@ module Lyricli
           @config["enabled_sources"].delete(klass.name)
           @config.save_config
         else
-          raise DisableSourceException
+          raise Exceptions::DisableSourceError
         end
       else
-        raise UnknownSourceException
+        raise Exceptions::UnknownSourceError
       end
     end
 
@@ -67,10 +67,10 @@ module Lyricli
           klass.reset
           disable(source_name)
         else
-          raise ResetSourceException
+          raise Exceptions::ResetSourceError
         end
       else
-        raise UnknownSourceException
+        raise Exceptions::UnknownSourceError
       end
     end
 
@@ -92,7 +92,7 @@ module Lyricli
             lock = true if source.class.name == "arguments"
           end
         rescue
-          raise SourceConfigurationException
+          raise Exceptions::SourceConfigurationError
         end
       end
       track

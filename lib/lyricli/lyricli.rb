@@ -9,12 +9,12 @@ module Lyricli
       @source_manager = SourceManager.new
     end
 
-    # Raises an InvalidLyricsException which means we did not get any valid
+    # Raises an InvalidLyricsError which means we did not get any valid
     # artist/song from any of the sources
     #
-    # @raise [Lyricli::InvalidLyricsException] because we found nothing
+    # @raise [Lyricli::Exceptions::InvalidLyricsError] because we found nothing
     def exit_with_error
-      raise InvalidLyricsException
+      raise Exceptions::InvalidLyricsError
     end
 
     # Extracts the current track, validates it and requests the lyrics from our
@@ -29,7 +29,7 @@ module Lyricli
 
       begin
         engine.get_lyrics
-      rescue LyricsNotFoundException
+      rescue Exceptions::LyricsNotFoundError
         "Lyrics not found :("
       end
     end

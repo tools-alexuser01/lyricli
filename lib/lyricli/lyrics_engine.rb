@@ -24,7 +24,7 @@ module Lyricli
         doc = Nokogiri::HTML(open(response['url']))
         node = doc.search(".lyricbox").first
       rescue
-        raise Lyricli::LyricsNotFoundException
+        raise Exceptions::LyricsNotFoundError
       end
 
       node.search(".rtMatcher").each do |n|

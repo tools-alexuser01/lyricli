@@ -22,15 +22,20 @@ module Lyricli
     #
     # @return [String] the found lyrics, or a string indicating none were found
     def get_lyrics
-      set_current_track
-      check_params
+
+      begin
+        set_current_track
+        check_params
+      rescue Exceptions::InvalidLyricsError
+        return "No Artist/Song could be found :("
+      end
 
       engine = LyricsEngine.new(@current_track[:artist], @current_track[:song])
 
       begin
-        engine.get_lyrics
+        return engine.get_lyrics
       rescue Exceptions::LyricsNotFoundError
-        "Lyrics not found :("
+        return "Lyrics not found :("
       end
     end
 
@@ -42,6 +47,7 @@ module Lyricli
 
     # Exits with error when there is an empty field from the current track.
     def check_params
+      self.exit_with_error unless @current_track
       self.exit_with_error if @current_track[:artist].nil? or @current_track[:artist].empty?
       self.exit_with_error if @current_track[:song].nil? or @current_track[:song].empty?
     end

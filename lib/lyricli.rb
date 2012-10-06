@@ -86,4 +86,11 @@ module Lyricli
       "There is no such Source"
     end
   end
+
+  # Returns the root of the Gem.
+  #
+  # @return [String] the root path for this gem
+  def self.root
+    File.expand_path('../..',__FILE__)
+  end
 end

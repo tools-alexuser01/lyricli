@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['lib/**/*.rb'] + Dir['bin/*']
   s.files += Dir['[A-Z]*'] + Dir['spec/**/*']
-  s.files += Dir['lib/**/*.json', 'lib/**/*.scpt']
+  s.files += Dir['config/**/*', 'lib/**/*.scpt']
 
   s.executables << 'lrc'
 
@@ -23,4 +23,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'ruby-debug19', '~> 0.11.6'
   s.add_development_dependency 'yard', '~> 0.8.2.1'
   s.add_development_dependency 'thin', '~> 1.5.0'
+  s.add_development_dependency 'rspec', '~> 2.11.0'
 end

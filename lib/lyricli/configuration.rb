@@ -77,8 +77,7 @@ module Lyricli
     # Loads the default configuration from a JSON file
     def load_default_config
       # Load the default
-      path_root = File.expand_path(File.dirname(__FILE__))
-      path = File.join(path_root, @defaults_path)
+      path = File.join(::Lyricli.root, "config", @defaults_path)
 
       if File.exists?(path)
         file = File.new(path, "r")

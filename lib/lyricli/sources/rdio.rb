@@ -68,7 +68,6 @@ module Lyricli
         @config["rdio_auth_token"] = token
         token
       end
-
     end
   end
 end

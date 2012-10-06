@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['lib/**/*.rb'] + Dir['bin/*']
   s.files += Dir['[A-Z]*'] + Dir['spec/**/*']
-  s.files += Dir['lib/**/*.json']
+  s.files += Dir['lib/**/*.json', 'lib/**/*.scpt']
 
   s.executables << 'lrc'
 

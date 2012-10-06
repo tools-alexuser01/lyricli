@@ -59,12 +59,17 @@ module Lyricli
 
     def current_track
       track = nil
+      lock = false
       @enabled_sources.each do |source|
         begin
           current_track = source.current_track
 
+          # This is a special thing for arguments. The thing is, they need to
+          # be inputted manually. So, if they are present they won't allow
+          # anyone else to give results. Makes sense, yet a bit hacky.
           unless current_track[:artist].nil? || current_track[:artist].empty? || current_track[:song].nil? || current_track[:song].empty?
-            track = current_track
+            track = current_track unless lock
+            lock = true if source.class.name == "arguments"
           end
         rescue
           raise SourceConfigurationException
@@ -75,7 +80,7 @@ module Lyricli
 
     def available_sources(format = false)
       path_root = File.expand_path(File.dirname(__FILE__))
-      sources = Dir[path_root+"/sources/*"].map{ |s|
+      sources = Dir[path_root+"/sources/*.rb"].map{ |s|
         name = s.split("/").last.gsub(/\.rb/, "")
 
         # Add a star to denote enabled sources

@@ -59,18 +59,30 @@ module Lyricli
   # Enables a source via the Source Manager
   def self.enable(source_name)
     source_manager = SourceManager.new
-    source_manager.enable(source_name)
+    begin
+      source_manager.enable(source_name)
+    rescue Exceptions::UnknownSourceError
+      "There is no such Source"
+    end
   end
 
   # Disables a source via the Source Manager
   def self.disable(source_name)
     source_manager = SourceManager.new
-    source_manager.disable(source_name)
+    begin
+      source_manager.disable(source_name)
+    rescue Exceptions::UnknownSourceError
+      "There is no such Source"
+    end
   end
 
   # Resets all configuration for a source via the Source Manager
   def self.reset(source_name)
     source_manager = SourceManager.new
-    source_manager.reset(source_name)
+    begin
+      source_manager.reset(source_name)
+    rescue Exceptions::UnknownSourceError
+      "There is no such Source"
+    end
   end
 end

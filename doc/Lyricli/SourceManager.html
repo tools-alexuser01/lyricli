@@ -377,7 +377,7 @@ Creates a new instance of SourceManager
       <span class='id identifier rubyid_current_source'>current_source</span> <span class='op'>=</span> <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
       <span class='ivar'>@enabled_sources</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_current_source'>current_source</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>StartSourceException</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Exceptions</span><span class='op'>::</span><span class='const'>StartSourceError</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -589,7 +589,7 @@ the current track, has an `:artist` and `:song` key.
         <span class='id identifier rubyid_lock'>lock</span> <span class='op'>=</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>arguments</span><span class='tstring_end'>&quot;</span></span>
       <span class='kw'>end</span>
     <span class='kw'>rescue</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>SourceConfigurationException</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Exceptions</span><span class='op'>::</span><span class='const'>SourceConfigurationError</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_track'>track</span>
@@ -670,10 +670,10 @@ the name of the source to disable
       <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>enabled_sources</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
       <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_save_config'>save_config</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>DisableSourceException</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Exceptions</span><span class='op'>::</span><span class='const'>DisableSourceError</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>UnknownSource</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Exceptions</span><span class='op'>::</span><span class='const'>UnknownSourceError</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -757,10 +757,10 @@ the name of the source to enable
       <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>enabled_sources</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_uniq!'>uniq!</span>
       <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_save_config'>save_config</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>EnableSourceException</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Exceptions</span><span class='op'>::</span><span class='const'>EnableSourceError</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>UnknownSource</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Exceptions</span><span class='op'>::</span><span class='const'>UnknownSourceError</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -927,10 +927,10 @@ the name of the source to reset.
       <span class='id identifier rubyid_klass'>klass</span><span class='period'>.</span><span class='id identifier rubyid_reset'>reset</span>
       <span class='id identifier rubyid_disable'>disable</span><span class='lparen'>(</span><span class='id identifier rubyid_source_name'>source_name</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ResetSourceException</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Exceptions</span><span class='op'>::</span><span class='const'>ResetSourceError</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>UnknownSource</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Exceptions</span><span class='op'>::</span><span class='const'>UnknownSourceError</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -943,7 +943,7 @@ the name of the source to reset.
 </div>
 
     <div id="footer">
-  Generated on Sat Oct  6 02:34:27 2012 by
+  Generated on Sat Oct  6 03:20:24 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.2).
 </div>

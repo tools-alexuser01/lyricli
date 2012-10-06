@@ -1,5 +1,7 @@
 module Lyricli
   module Sources
+
+    # This is the Source for rdio
     class Rdio
 
       class << self
@@ -32,6 +34,7 @@ module Lyricli
 
       # The current_track method should return the name of the current
       # artist and song.
+      #
       # @return [Hash] A hash containing the current `:song` and `:artist`.
       def current_track
         response = @rdio.call('currentUser', {'extras' => 'lastSongPlayed'})

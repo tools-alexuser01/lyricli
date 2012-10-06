@@ -1,5 +1,6 @@
 module Lyricli
   module Sources
+    # The source for iTunes
     class Itunes
 
       class << self

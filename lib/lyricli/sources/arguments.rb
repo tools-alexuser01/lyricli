@@ -1,5 +1,7 @@
 module Lyricli
   module Sources
+    # The arguments source. This one is special since it expects two
+    # arguments. It is treated specially by the SourceManager.
     class Arguments
 
       class << self

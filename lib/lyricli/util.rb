@@ -30,7 +30,7 @@ module Lyricli
     # @param [String] p the parameter to be sanitized
     # @return [String] the sanitized parameter
     def sanitize_param(p)
-      URI.encode_www_form_component(p.gsub(/ /, "+")).gsub("%2B", "+")
+      CGI.escape(p.gsub(/ /, "+")).gsub("%2B", "+")
     end
   end
 end

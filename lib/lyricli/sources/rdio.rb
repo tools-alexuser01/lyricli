@@ -40,7 +40,7 @@ module Lyricli
         response = @rdio.call('currentUser', {'extras' => 'lastSongPlayed'})
         artist = response["result"]["lastSongPlayed"]["artist"]
         song = response["result"]["lastSongPlayed"]["name"]
-        {artist: artist, song: song}
+        {:artist => artist, :song => song}
       end
 
       # The reset method resets any configurations it may have

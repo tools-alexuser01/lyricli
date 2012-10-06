@@ -27,7 +27,7 @@ module Lyricli
       def current_track
         artist = ARGV[0]
         song = ARGV[1]
-        {artist: artist, song: song}
+        {:artist => artist, :song => song}
       end
 
       # The reset method resets any configurations it may have

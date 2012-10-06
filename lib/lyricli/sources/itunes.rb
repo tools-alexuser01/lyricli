@@ -29,7 +29,7 @@ module Lyricli
         path = File.join(path_root, @script)
         current = `osascript #{path}`
         current = current.split("<-SEP->")
-        {artist: current[0], song: current[1]}
+        {:artist => current[0], :song => current[1]}
       end
 
       # The reset method resets any configurations it may have

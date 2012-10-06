@@ -13,95 +13,54 @@ $VERBOSE = nil
 require 'rdio'
 $VERBOSE = original_verbosity
 
-class Lyricli
+# Add current path to include path
+$:.unshift File.expand_path(File.dirname(__FILE__))
 
-  # TODO: Change the whole fucking thing
-  def initialize
-    @rdio_key = "sddac5t8akqrzh5b6kg53jfm"
-    @rdio_secret = "PRcB8TggFr"
-    @token_path = File.expand_path("~/.rdio_token")
+# Local Dependencies
+require "lyricli/util"
+require "lyricli/configuration"
+require "lyricli/lyrics_engine"
+require "lyricli/source_manager"
+require "lyricli/sources/arguments"
+require "lyricli/sources/rdio"
+require "lyricli/sources/itunes"
 
-    #Expand the symlink and get the path
-    if File.symlink?(__FILE__) then
-      path = File.dirname(File.readlink(__FILE__))
-    else
-      path = File.dirname(__FILE__)
-    end
-
-    # Get the current rdio track
-    @rdio = init_rdio
-    rdio_track
-
-    #Get the current iTunes track
-    current = `osascript #{path}/current_song.scpt`
-    if current and not current.empty? then
-      current = current.split("<-SEP->")
-      @artist ||= current[0]
-      @song ||= current[1]
-    end
+module Lyricli
+  def self.execute
+    @lyricli = Lyricli.new
+    @lyricli.get_lyrics
   end
 
-  def init_rdio
+  class Lyricli
 
-    if File.exists?(@token_path)
-      f = File.new(@token_path, "r")
+    def initialize
+      @source_manager = SourceManager.new
+    end
+
+    def exit_with_error
+      abort "Usage: #{$0} artist song"
+    end
+
+    def get_lyrics
+      set_current_track
+      check_params
+
+      engine = LyricsEngine.new(@current_track[:artist], @current_track[:song])
+
       begin
-        token = MultiJson.decode(f.read)
-      rescue
-        token = create_rdio_token
+        engine.get_lyrics
+      rescue LyricsNotFoundException
+        "Lyrics not found :("
       end
-    else
-      token = create_rdio_token
     end
 
-    Rdio::SimpleRdio.new([@rdio_key, @rdio_secret], token)
-  end
-
-
-  def exit_with_error
-    abort "Usage: #{$0} artist song"
-  end
-
-  def get_lyrics
-
-    #Use the API to search
-    uri = URI("http://lyrics.wikia.com/api.php?artist=#{self.sanitize_param @artist}&song=#{self.sanitize_param @song}&fmt=realjson")
-    begin
-      res = Net::HTTP.get(uri)
-      res = MultiJson.decode(res)
-
-      #Get the actual lyrics url
-      doc = Nokogiri::HTML(open(res['url']))
-      node = doc.search(".lyricbox").first
-    rescue
-      abort "Lyrics not found :("
+    def set_current_track
+      @current_track = @source_manager.current_track
     end
 
-    #Remove the rtMatcher nodes
-    node.search(".rtMatcher").each do |n|
-      n.remove
+    def check_params
+      self.exit_with_error if @current_track[:artist].nil? or @current_track[:artist].empty?
+      self.exit_with_error if @current_track[:song].nil? or @current_track[:song].empty?
     end
-
-    #Maintain new lines
-    node.search("br").each do |br|
-      br.replace "\n"
-    end
-
-    #Retrieve the lyrics
-    puts node.inner_text
-  end
-
-  def check_params
-    self.exit_with_error if @artist.nil? or @artist.empty?
-    self.exit_with_error if @song.nil? or @song.empty?
-  end
-
-  def sanitize_param(p)
-    URI.encode_www_form_component(p.gsub(/ /, "+")).gsub("%2B", "+")
   end
 end
-
-
-lrc = Lyricli.new
-lrc.check_params
-lrc.get_lyrics

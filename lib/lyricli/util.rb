@@ -5,10 +5,16 @@ module Lyricli
     end
 
     def parse_class(class_name)
-      klass = Module.const_get(class_name)
-      return klass if klass.is_a?(Class)
+      begin
+        path = "Sources::#{class_name}"
+        return eval(path)
       rescue NameError
-          return nil
+        return nil
+      end
+    end
+
+    def sanitize_param(p)
+      URI.encode_www_form_component(p.gsub(/ /, "+")).gsub("%2B", "+")
     end
   end
 end

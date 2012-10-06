@@ -53,6 +53,10 @@ And the first thing I want to work on after that is done is separating
 the Lyrics Engines so we can add/remove lyrics engines in a similar way to how
 we currently add/remove sources.
 
+Also, I want to add the last song to the configuration, so you can check
+that. This would let us "watch" lyricli without hammering the lyrics
+wiki api
+
 ### Leave Feedback Please! ###
 
 If you decide to use or hack away at Lyricly, please don't forget to

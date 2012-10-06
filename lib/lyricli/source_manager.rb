@@ -36,7 +36,7 @@ module Lyricli
           raise EnableSourceException
         end
       else
-        raise UnknownSource
+        raise UnknownSourceException
       end
     end
 
@@ -53,7 +53,7 @@ module Lyricli
           raise DisableSourceException
         end
       else
-        raise UnknownSource
+        raise UnknownSourceException
       end
     end
 
@@ -70,7 +70,7 @@ module Lyricli
           raise ResetSourceException
         end
       else
-        raise UnknownSource
+        raise UnknownSourceException
       end
     end
 

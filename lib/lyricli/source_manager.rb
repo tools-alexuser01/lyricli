@@ -54,5 +54,16 @@ module Lyricli
       end
       track
     end
+
+    def available_sources
+      path_root = File.expand_path(File.dirname(__FILE__))
+      sources = Dir[path_root+"/sources/*"].map{ |s|
+        s.split("/").last.gsub(/\.rb/, "")
+      }
+
+      # Remove arguments (Hack?) We don't want anybody to touch tihs one.
+      sources.delete("arguments")
+      sources
+    end
   end
 end

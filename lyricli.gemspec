@@ -11,6 +11,8 @@ Gem::Specification.new do |s|
   s.files += Dir['[A-Z]*'] + Dir['spec/**/*']
   s.files += Dir['lib/**/*.json']
 
+  s.executables << 'lrc'
+
   # Runtime Dependencies
   s.add_runtime_dependency 'nokogiri', '~> 1.5.5'
   s.add_runtime_dependency 'multi_json', '~> 1.3.6'

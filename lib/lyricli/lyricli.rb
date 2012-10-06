@@ -6,7 +6,7 @@ module Lyricli
     end
 
     def exit_with_error
-      abort "Usage: #{$0} artist song"
+      raise InvalidLyrics
     end
 
     def get_lyrics

@@ -31,4 +31,25 @@ module Lyricli
     @lyricli = Lyricli.new
     @lyricli.get_lyrics
   end
+
+  def self.version
+    Gem.loaded_specs["lyricli"].version
+  end
+
+  def self.sources
+    source_manager = SourceManager.new
+    source_manager.available_sources.join(", ")
+  end
+
+  def self.enable
+
+  end
+
+  def self.disable
+
+  end
+
+  def self.reset
+
+  end
 end

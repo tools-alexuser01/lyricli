@@ -1,0 +1,9 @@
+lib/lyricli.rb 086e293fec4488ede35adbb911723c47205cdd42
+lib/lyricli/util.rb 069f80245171b855a8df437f114e6fd14a750623
+lib/lyricli/sources/rdio.rb 1a689bcee864f3f558bb4d5ee29e6a4bdb449991
+lib/lyricli/lyrics_engine.rb aa9de79d61c208533999db8604123e31f6f99b70
+lib/lyricli/configuration.rb ceebe35a6098aa48fe1f3d788f40350fcc9bf3ed
+lib/lyricli/sources/itunes.rb da39a3ee5e6b4b0d3255bfef95601890afd80709
+lib/lyricli/source_manager.rb c3d4c5bb7fec881e4edbcef97d863f1f5974e183
+lib/lyricli/sources/arguments.rb de3b31f05d118cf00fccb41e47fd35979da9eb14
+lib/lyricli/lyricli.rb 8a5db180cd047b932626c7eea51a71715c689c1f

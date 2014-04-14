@@ -3,8 +3,6 @@
 require 'optparse'
 require 'lyricli'
 
-
-options = {}
 OptionParser.new do |opts|
     opts.banner = %{Usage:
     lrc [options]

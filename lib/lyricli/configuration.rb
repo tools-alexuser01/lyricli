@@ -56,7 +56,7 @@ module Lyricli
     def load_config
       path = File.expand_path(@config_path)
 
-      if File.exists?(path)
+      if File.exist?(path)
         file = File.new(path, "r")
         @config = MultiJson.decode(file.read)
       else

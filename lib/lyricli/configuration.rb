@@ -79,7 +79,7 @@ module Lyricli
       # Load the default
       path = File.join(::Lyricli.root, "config", @defaults_path)
 
-      if File.exists?(path)
+      if File.exist?(path)
         file = File.new(path, "r")
         @config = MultiJson.decode(file.read)
       else

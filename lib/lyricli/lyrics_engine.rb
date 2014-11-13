@@ -31,11 +31,15 @@ module Lyricli
         n.remove
       end
 
+      node.search("script").each do |n|
+        n.remove
+      end
+
       node.search("br").each do |br|
         br.replace "\n"
       end
 
-      node.inner_text
+      node.inner_text.gsub(/\s+$/, "")
     end
   end
 end

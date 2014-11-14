@@ -35,6 +35,10 @@ Options:
       exit
     end
 
+    opts.on("-t", "--title", "Shows the song title and artist") do
+      Lyricli.show_title
+    end
+
     opts.on("-h", "--help", "Shows this message") do
       puts opts
       exit

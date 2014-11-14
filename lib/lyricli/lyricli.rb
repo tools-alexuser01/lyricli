@@ -21,7 +21,7 @@ module Lyricli
     # LyricsEngine
     #
     # @return [String] the found lyrics, or a string indicating none were found
-    def get_lyrics
+    def get_lyrics(show_title=false)
 
       begin
         set_current_track
@@ -33,7 +33,14 @@ module Lyricli
       engine = LyricsEngine.new(@current_track[:artist], @current_track[:song])
 
       begin
-        return engine.get_lyrics
+        lyrics_output = engine.get_lyrics
+
+        if show_title
+          lyrics_title = "#{@current_track[:artist]} - #{@current_track[:song]}"
+          lyrics_output = "#{lyrics_title}\n\n#{lyrics_output}"
+        end
+
+        return lyrics_output
       rescue Exceptions::LyricsNotFoundError
         return "Lyrics not found :("
       end

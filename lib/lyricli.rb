@@ -40,7 +40,7 @@ module Lyricli
   # @return [String] the fetched lyrics
   def self.lyrics
     @lyricli = Lyricli.new
-    @lyricli.get_lyrics
+    @lyricli.get_lyrics(@show_title)
   end
 
   # Returns the version of the library
@@ -92,5 +92,10 @@ module Lyricli
   # @return [String] the root path for this gem
   def self.root
     File.expand_path('../..',__FILE__)
+  end
+
+  # Sets the show_title instance variable so it requests the title
+  def self.show_title
+    @show_title = true
   end
 end

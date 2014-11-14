@@ -8,10 +8,7 @@ see how to get it working.
 
 ### Installing ###
 
-1. Clone this Repo
-2. `gem build lyricli.gemspec`
-3. `gem install lyricli-0.0.1.gem`
-4. Voila!
+`gem install lyricli`
 
 ### Usage ###
 
@@ -40,6 +37,14 @@ commands:
 * `lrc -r` or `lrc --reset SOURCE` reset all configuration for a source.
 * `lrc -v` or `lrc --version` show the installed version of lyricli.
 * `lrc -h` or `lrc --help` display some help
+
+#### It always gives me rdio even if using iTunes ####
+
+Due to the way the rdio API works, we can't tell if you're actively
+listen and it always returns the last song. Currently the best way to
+have the sources correctly is to enable **rdio first** and then
+**itunes**. If you enabled itunes first, you can just disable and
+re-enable and it should fix it.
 
 ### Roadmap ###
 
